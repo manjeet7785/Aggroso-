@@ -28,12 +28,12 @@ export function EvidencePage({ evidence = [], onChange }) {
 
   return (
     <section className="panel feature-page" style={{ width: '100%' }}>
-      <div className="panel-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="panel-heading">
         <div>
           <h2>Release Evidence & Test Audit</h2>
           <p>Stable evidence records linked to release package claims.</p>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <div className="panel-heading-actions">
           <div className="evidence-summary-badge">
             <span style={{ color: '#10b981', fontWeight: 700 }}>{passedCount} Passed</span>
             {failedCount > 0 && <span style={{ color: '#ef4444', fontWeight: 700, marginLeft: '8px' }}>{failedCount} Failed</span>}
