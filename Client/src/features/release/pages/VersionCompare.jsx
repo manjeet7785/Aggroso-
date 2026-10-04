@@ -54,7 +54,7 @@ export function VersionCompare({ releaseId, from = 1, to = 2 }) {
           <h2>Version Comparison</h2>
           <p>Side-by-side facts comparison between release versions.</p>
         </div>
-        
+
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <small style={{ fontWeight: 600, color: '#64748b' }}>From:</small>
