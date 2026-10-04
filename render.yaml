@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: aggroso-server
+    env: node
+    plan: free
+    rootDir: Server
+    buildCommand: npm install
+    startCommand: node src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRY
+        value: 7d
+      - key: BCRYPT_ROUNDS
+        value: "10"
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: NVIDIA_BASE_URL
+        value: https://integrate.api.nvidia.com/v1
+      - key: NVIDIA_MODEL
+        value: meta/llama-3.1-70b-instruct
+      - key: CHAT_API_KEY_NVIDIA
+        sync: false
