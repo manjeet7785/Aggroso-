@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ignore": [
+    ".env",
+    "dist",
+    "logs",
+    "Client"
+  ],
+  "exec": "node src/index.js"
+}
