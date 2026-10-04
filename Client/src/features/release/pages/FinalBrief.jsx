@@ -6,7 +6,7 @@ export function FinalBrief({ releaseId, version }) {
 
   const finalQuery = useQuery({
     queryKey: ['final-brief', releaseId, version],
-    queryFn: () => fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/releases/${releaseId}/versions/${version}/final-brief`, {
+    queryFn: () => fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://aggroso-m8ra.onrender.com/api'}/releases/${releaseId}/versions/${version}/final-brief`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('atlas_token')}` }
     }).then(res => res.json()),
     enabled: Boolean(releaseId && version)
