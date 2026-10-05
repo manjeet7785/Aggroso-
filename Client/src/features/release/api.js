@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://aggroso-m8ra.onrender.com/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://aggroso-ctg0.onrender.com/api',
   withCredentials: true
 })
 

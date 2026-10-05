@@ -1011,148 +1011,277 @@
   padding: 28px 2px 5px
 }
 
-@media (max-width:900px) {
+.version-compare-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.version-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Mobile Overlay & Sidebar Drawer */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: #1e293b;
+  margin-right: 12px;
+  line-height: 1;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-close-btn {
+  display: none;
+  background: none;
+  border: 0;
+  color: #a9c5bd;
+  font-size: 18px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-close-btn {
+    display: block;
+  }
+
   .sidebar {
-    width: 70px;
-    padding: 24px 9px
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 270px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+    padding: 20px 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
   }
 
-  .brand {
-    padding: 0 10px 30px
+  .sidebar.open {
+    transform: translateX(0);
   }
 
-  .brand>span:last-child,
-  .workspace-switcher>span:not(.workspace-icon),
+  .brand > span:last-child,
+  .workspace-switcher > span:not(.workspace-icon),
   .chevron,
   .nav-label,
-  .sidebar-footer>div:not(.avatar),
+  .sidebar-footer > div:not(.avatar),
   .more {
-    display: none
+    display: block !important;
   }
 
   .workspace-switcher {
-    padding: 8px;
-    justify-content: center
+    padding: 10px;
+    justify-content: flex-start;
   }
 
   .main-nav a,
   .main-nav button {
-    justify-content: center;
-    padding: 11px
+    justify-content: flex-start;
+    padding: 10px 13px;
   }
 
   .main-nav a span,
   .main-nav button span {
-    width: auto
-  }
-
-  .main-nav a.active,
-  .main-nav button.active {
-    padding: 11px
+    width: 20px;
   }
 
   .sidebar-footer {
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0
+    justify-content: space-between;
+    padding: 16px 10px 0;
   }
 
-  .content-wrap {
-    padding: 30px 25px
+  .main-content {
+    width: 100%;
+    min-width: 0;
   }
 
   .topbar {
-    padding: 0 25px
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .content-wrap {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .page-heading h1 {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .heading-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .version-compare-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .version-compare-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .heading-actions .button {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .workspace-toolbar {
+    flex-direction: column;
+    gap: 10px;
+    display: flex;
+  }
+
+  .workspace-toolbar select {
+    width: 100%;
+    min-width: 0;
   }
 
   .workspace-grid,
   .analysis-view,
   .briefs-view {
-    grid-template-columns: 1fr
-  }
-
-  .heading-actions {
-    flex-direction: column
-  }
-
-  .package-body {
-    grid-template-columns: 175px 1fr
-  }
-}
-
-@media (max-width:620px) {
-  .content-wrap {
-    padding: 25px 16px
-  }
-
-  .topbar {
-    padding: 0 16px
-  }
-
-  .save-status {
-    display: none
-  }
-
-  .page-heading {
-    display: block
-  }
-
-  .heading-actions {
-    flex-direction: row;
-    margin-top: 22px
-  }
-
-  .version-row {
-    display: block
-  }
-
-  .release-meta {
-    margin-top: 16px;
-    flex-wrap: wrap
-  }
-
-  .package-body {
-    display: block
-  }
-
-  .section-list {
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    overflow: auto
-  }
-
-  .section-list button {
-    min-width: 145px
-  }
-
-  .section-editor {
-    padding: 20px
-  }
-
-  .tabs {
-    gap: 15px;
-    overflow: auto
-  }
-
-  .tabs button {
-    white-space: nowrap
-  }
-
-  .page-heading h1 {
-    font-size: 30px
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .panel-heading {
-    padding: 18px
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .panel-heading > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Evidence Page row cards on mobile */
+  .evidence-row-card {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 14px !important;
+  }
+
+  .evidence-row-card input,
+  .evidence-row-card select {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .evidence-summary-badge {
+    margin-bottom: 6px;
+  }
+
+  .section-list {
+    display: flex;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 8px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .section-list button {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 8px 12px;
+  }
+
+  .section-list button .list-arrow {
+    display: none;
+  }
+
+  .package-body {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-editor {
+    padding: 16px;
+  }
+
+  .section-editor textarea {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-heading h1 {
+    font-size: 22px;
+  }
+
+  .heading-actions {
+    flex-direction: column;
+  }
+
+  .breadcrumbs {
+    font-size: 11px;
+  }
+
+  .role-pill {
+    padding: 4px 7px;
+    font-size: 9px;
   }
 
   .brief-card {
-    padding: 18px
-  }
-
-  .brief-actions {
-    flex-wrap: wrap
+    padding: 14px;
   }
 }
 

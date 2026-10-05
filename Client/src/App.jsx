@@ -142,6 +142,7 @@ function Workspace({ user, onLogout }) {
   const [selectedRelease, setSelectedRelease] = useState(null)
   const [selectedVersion, setSelectedVersion] = useState(null)
   const [activeTab, setActiveTab] = useState('package') // 'package', 'evidence', 'artifacts', 'compare', 'final'
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const releases = useQuery({ queryKey: ['releases'], queryFn: releaseApi.list })
   const versions = useQuery({ queryKey: ['versions', selectedRelease], queryFn: () => releaseApi.versions(selectedRelease), enabled: Boolean(selectedRelease) })
@@ -190,18 +191,23 @@ function Workspace({ user, onLogout }) {
 
   return (
     <div className="app-shell">
-      <aside className="sidebar">
-        <Brand />
+      {mobileMenuOpen && <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)} />}
+
+      <aside className={`sidebar ${mobileMenuOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">
+          <Brand />
+          <button className="sidebar-close-btn" onClick={() => setMobileMenuOpen(false)}>✕</button>
+        </div>
         <div className="workspace-switcher">
           <span className="workspace-icon">{user.name ? user.name.slice(0, 2).toUpperCase() : 'US'}</span>
           <span><strong>{user.name}</strong><small>{user.role} workspace</small></span>
         </div>
         <nav className="main-nav">
-          <button className={activeTab === 'package' ? 'active' : ''} onClick={() => setActiveTab('package')}><span>↗</span><span>Package</span></button>
-          <button className={activeTab === 'evidence' ? 'active' : ''} onClick={() => setActiveTab('evidence')}><span>▤</span><span>Evidence</span></button>
-          <button className={activeTab === 'artifacts' ? 'active' : ''} onClick={() => setActiveTab('artifacts')}><span>✦</span><span>Generated Brief</span></button>
-          <button className={activeTab === 'compare' ? 'active' : ''} onClick={() => setActiveTab('compare')}><span>⇄</span><span>Compare Versions</span></button>
-          <button className={activeTab === 'final' ? 'active' : ''} onClick={() => setActiveTab('final')}><span>✔</span><span>Final Brief</span></button>
+          <button className={activeTab === 'package' ? 'active' : ''} onClick={() => { setActiveTab('package'); setMobileMenuOpen(false); }}><span>↗</span><span>Package</span></button>
+          <button className={activeTab === 'evidence' ? 'active' : ''} onClick={() => { setActiveTab('evidence'); setMobileMenuOpen(false); }}><span>▤</span><span>Evidence</span></button>
+          <button className={activeTab === 'artifacts' ? 'active' : ''} onClick={() => { setActiveTab('artifacts'); setMobileMenuOpen(false); }}><span>✦</span><span>Generated Brief</span></button>
+          <button className={activeTab === 'compare' ? 'active' : ''} onClick={() => { setActiveTab('compare'); setMobileMenuOpen(false); }}><span>⇄</span><span>Compare Versions</span></button>
+          <button className={activeTab === 'final' ? 'active' : ''} onClick={() => { setActiveTab('final'); setMobileMenuOpen(false); }}><span>✔</span><span>Final Brief</span></button>
         </nav>
         <div className="sidebar-footer">
           <small>{user.email}</small>
@@ -211,8 +217,13 @@ function Workspace({ user, onLogout }) {
 
       <main className="main-content">
         <header className="topbar">
-          <div className="breadcrumbs">
-            <span>Releases</span><i>/</i><strong>{selectedVersion ? `v${selectedVersion}` : 'Workspace'}</strong>
+          <div className="topbar-left">
+            <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
+              ☰
+            </button>
+            <div className="breadcrumbs">
+              <span>Releases</span><i>/</i><strong>{selectedVersion ? `v${selectedVersion}` : 'Workspace'}</strong>
+            </div>
           </div>
           <span className="role-pill">{user.role}</span>
         </header>

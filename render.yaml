@@ -27,3 +27,5 @@ services:
         value: meta/llama-3.1-70b-instruct
       - key: CHAT_API_KEY_NVIDIA
         sync: false
+      - key: CLIENT_ORIGIN
+        value: https://aggroso-rho.vercel.app

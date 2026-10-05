@@ -49,13 +49,13 @@ export function VersionCompare({ releaseId, from = 1, to = 2 }) {
 
   return (
     <section className="panel feature-page" style={{ width: '100%' }}>
-      <div className="panel-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="panel-heading">
         <div>
           <h2>Version Comparison</h2>
           <p>Side-by-side facts comparison between release versions.</p>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div className="version-compare-controls">
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <small style={{ fontWeight: 600, color: '#64748b' }}>From:</small>
             <select
@@ -126,7 +126,7 @@ export function VersionCompare({ releaseId, from = 1, to = 2 }) {
                     )}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', padding: '16px' }}>
+                  <div className="version-compare-grid">
                     <div style={{ background: '#f1f5f9', padding: '12px', borderRadius: '6px', fontSize: '13px', color: '#334155', whiteSpace: 'pre-wrap' }}>
                       <small style={{ display: 'block', color: '#64748b', fontSize: '10px', fontWeight: 700, marginBottom: '4px' }}>VERSION {fromVer}</small>
                       {textFrom}

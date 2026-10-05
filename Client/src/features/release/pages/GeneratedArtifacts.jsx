@@ -37,7 +37,7 @@ export function GeneratedArtifacts({ releaseId, version, actorId }) {
 
   return (
     <section className="panel feature-page" style={{ width: '100%' }}>
-      <div className="panel-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="panel-heading">
         <div>
           <h2>AI-Generated Statements & Briefs</h2>
           <p>Every statement remains proposed until explicit human approval.</p>
